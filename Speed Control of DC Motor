@@ -1,0 +1,37 @@
+// Pin definitions
+const int motorPin1 = 9;  // IN1 on the L298N
+const int motorPin2 = 10; // IN2 on the L298N
+const int enablePin = 11; // ENA on the L298N
+
+void setup() {
+  // Set the motor control pins as outputs
+  pinMode(motorPin1, OUTPUT);
+  pinMode(motorPin2, OUTPUT);
+  pinMode(enablePin, OUTPUT);
+}
+
+void loop() {
+  // Rotate motor clockwise
+  digitalWrite(motorPin1, HIGH); // Set IN1 high
+  digitalWrite(motorPin2, LOW);  // Set IN2 low
+  for (int speed = 0; speed <= 255; speed += 5) {
+    analogWrite(enablePin, speed); // Set speed (0-255)
+    delay(100);                    // Wait for 100 milliseconds
+  }
+
+  // Stop the motor
+  analogWrite(enablePin, 0);       // Stop motor
+  delay(2000);                     // Wait for 2 seconds
+
+  // Rotate motor counterclockwise
+  digitalWrite(motorPin1, LOW);   // Set IN1 low
+  digitalWrite(motorPin2, HIGH);  // Set IN2 high
+  for (int speed = 0; speed <= 255; speed += 5) {
+    analogWrite(enablePin, speed); // Set speed (0-255)
+    delay(100);                    // Wait for 100 milliseconds
+  }
+
+  // Stop the motor
+  analogWrite(enablePin, 0);       // Stop motor
+  delay(2000);                     // Wait for 2 seconds
+}
