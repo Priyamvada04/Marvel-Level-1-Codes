@@ -83,7 +83,7 @@
 
   function getWeather(city){
    $('.weather-temperature').openWeather({
-    key: '6f641f1f9b6a11bec4788c66225cd564',
+    key: '(key)',
     city: city,
     descriptionTarget: '.weather-description',
     windSpeedTarget: '.weather-wind-speed',
